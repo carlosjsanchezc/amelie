@@ -1,0 +1,36 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div text-center style="font-size: 2rem; font-color:rgb(255,100,50)">
+    Amelie Bot Trader
+  </div>
+  <div text-center style="font-size: 2rem; font-color:rgb(255,100,50)">
+  
+    <img src="assets/imgs/amelie.png" style="height:200px">
+  </div>
+
+  <ion-list>
+    <ion-item>
+      <ion-label  stacked ><ion-icon name="email"></ion-icon>Correo</ion-label>
+      <ion-input type="email" [(ngModel)]="email" name="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  stacked >Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+    </ion-item>
+    <button ion-button block (click)="validalogin()">Login</button>
+  </ion-list>
+</ion-content>
