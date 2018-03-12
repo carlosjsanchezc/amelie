@@ -1,11 +1,55 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      Configuración
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-list>
+    <ion-item>
+        <ion-label stacked>Exchanger</ion-label>
+        <ion-input type="text" readonly="true" [(ngModel)]="exchanger"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>
+        <ion-icon name="unlock"></ion-icon>
+        API KEY
+      </ion-label>  
+      <ion-input name="apikey" readonly="true" type="text" [(ngModel)]="apikey" style="font-size:1.2rem">
 
+      </ion-input>
+
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>
+          <ion-icon name="unlock"></ion-icon>
+          API SIGN
+        </ion-label>  
+        <ion-input name="signkey" readonly="true" type="text" [(ngModel)]="apisign" style="font-size:1.2rem">
+  
+        </ion-input>
+  
+      </ion-item>
+      <ion-item>
+        <h2 text-center>Monedas que desea tradear</h2>
+      </ion-item>
+      <ion-item *ngFor="let moneda of monedas;let i=index">
+
+              <ion-label>
+                  <img src="assets/imgs/{{moneda.imagen}}" style="height: 16px">
+              
+                  {{moneda.nombre}}/{{moneda.simbolo}}
+
+              </ion-label>
+              
+              
+              <ion-checkbox item-end [(ngModel)]="moneda.estado" checked="{{moneda.estado}}" ></ion-checkbox>
+
+      </ion-item>
+  </ion-list>
+  <button ion-button block (click)="salvar()">
+    Salvar
+  </button>
 </ion-content>
