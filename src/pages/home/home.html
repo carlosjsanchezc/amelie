@@ -120,7 +120,18 @@
       </ion-col>
     </ion-row>
     <ion-list>
-      <ion-item><div text-center style="font-weight: bold">Compras Abiertas  <button color="light" ion-button item-end (click)="ionViewDidLoad()"><ion-icon name="refresh" ></ion-icon></button></div></ion-item>
+      <ion-item>
+        <ion-row>
+          <ion-col col-10>
+              <div text-center style="font-weight: bold">Compras Abiertas</div>
+          </ion-col>
+          <ion-col col-2>
+              <button color="light"  ion-button block (click)="ionViewDidLoad()"><ion-icon name="refresh" ></ion-icon></button>
+          </ion-col>
+        </ion-row>
+  
+      
+      </ion-item>
       <ion-item *ngFor="let pendiente of pendientes">
         <ion-avatar>{{pendiente.moneda}}</ion-avatar>
         
@@ -128,8 +139,8 @@
         <h3>Precio de Compra:{{pendiente.compra}} USD</h3> 
         <h3>Precio Actual:{{pendiente.valor_moneda}} USD</h3> 
         <h3>Variación:
-        <ion-badge color="secondary" *ngIf="(pendiente.valor_moneda/pendiente.compra*100-100)>0">{{pendiente.valor_moneda/pendiente.compra*100-100}}%</ion-badge>
-        <ion-badge color="danger" *ngIf="(pendiente.valor_moneda/pendiente.compra*100-100)<0">{{pendiente.valor_moneda/pendiente.compra*100-100}}%</ion-badge>
+        <ion-badge color="secondary" *ngIf="pendiente.variacion>0">{{pendiente.variacion}}%</ion-badge>
+        <ion-badge color="danger" *ngIf="pendiente.variacion<0">{{pendiente.variacion}}%</ion-badge>
         </h3> 
         
         
