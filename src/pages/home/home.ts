@@ -11,6 +11,8 @@ export class HomePage {
   msjapi:string;
   pendientes:any[]=[];
   trades:number;
+  saldo:number;
+  spint:boolean;
 
   constructor(public navCtrl: NavController,public httpService:HttpconnectProvider) {
     this.exchanger=this.httpService.exchanger;
@@ -28,6 +30,9 @@ export class HomePage {
     {
       console.log(data);
       console.log(data['success']);
+      console.log(data['return']['funds']);
+      this.saldo=data['return']['funds']['usd'];
+
       if (data['success']){
         this.msjapi="Verificada";
       }
@@ -41,13 +46,13 @@ export class HomePage {
     this.exchanger=this.httpService.exchanger;
     this.nombre=this.httpService.nombre;
     let url="https://lycexpress.com/amelie/apiamelie.php?id_usuario="+this.httpService.id_usuario+"&opcion=2";
-    
+    this.spint=true;
     this.httpService.httpr(url).subscribe((data) => 
     {
       console.log(data);
       this.pendientes=data['results'];
       this.trades=this.pendientes.length;
-      
+      this.spint=false;
     });
   }
 }

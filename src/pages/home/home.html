@@ -53,7 +53,7 @@
             </div>
             <div text-center style="font-size: 1.2rem">
               <br>
-                179.33 USD
+                {{saldo}} USD
             </div>
   
         </ion-col>
@@ -120,6 +120,11 @@
       </ion-col>
     </ion-row>
     <ion-list>
+      <ion-item  *ngIf="spint">
+        <div text-center>
+        <ion-spinner icon="bubbles"></ion-spinner>
+        </div>
+      </ion-item>
       <ion-item>
         <ion-row>
           <ion-col col-10>
@@ -132,12 +137,16 @@
   
       
       </ion-item>
-      <ion-item *ngFor="let pendiente of pendientes">
+      <ion-item-sliding *ngFor="let pendiente of pendientes">
+      <ion-item >
         <ion-avatar>{{pendiente.moneda}}</ion-avatar>
         
         <h3>Fecha Compra:{{pendiente.fecha}}</h3>
-        <h3>Precio de Compra:{{pendiente.compra}} USD</h3> 
+        <h3>Precio de Compra:{{pendiente.compra}} USD</h3>
+        <h3>Cantidad Comprada:{{pendiente.cantidad}}</h3> 
+        <h3>Inversion:{{pendiente.inversion}}</h3>
         <h3>Precio Actual:{{pendiente.valor_moneda}} USD</h3> 
+        <h3>Profit:{{pendiente.profit}}USD</h3>
         <h3>Variación:
         <ion-badge color="secondary" *ngIf="pendiente.variacion>0">{{pendiente.variacion}}%</ion-badge>
         <ion-badge color="danger" *ngIf="pendiente.variacion<0">{{pendiente.variacion}}%</ion-badge>
@@ -145,5 +154,12 @@
         
         
       </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" >
+          <ion-icon name="checkmark-circle"></ion-icon>
+          Vender
+        </button>
+            </ion-item-options>
+    </ion-item-sliding>
     </ion-list>
 </ion-content>
