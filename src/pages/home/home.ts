@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpconnectProvider } from '../../providers/httpconnect/httpconnect';
+
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -13,11 +15,17 @@ export class HomePage {
   trades:number;
   saldo:number;
   spint:boolean;
+  datos:any;
 
   constructor(public navCtrl: NavController,public httpService:HttpconnectProvider) {
     this.exchanger=this.httpService.exchanger;
     this.nombre=this.httpService.nombre;
     this.trades=0;
+    setInterval(() => {      
+      console.log('timer');
+      this.datosbot();
+      //you can call function here
+},30000);
 
   }
   ionViewDidLoad() {
@@ -41,11 +49,45 @@ export class HomePage {
     });
     this.datosbot();
   }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.datosbot();
+    setTimeout(() => {
+      this.datosbot();
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
+
   datosbot()
   {
+    console.log('Obteniendo Datos');
     this.exchanger=this.httpService.exchanger;
     this.nombre=this.httpService.nombre;
     let url="https://lycexpress.com/amelie/apiamelie.php?id_usuario="+this.httpService.id_usuario+"&opcion=2";
+    this.spint=true;
+    this.httpService.httpr(url).subscribe((data) => 
+    {
+      console.log(data);
+      this.pendientes=data['results'];
+      this.trades=this.pendientes.length;
+      this.spint=false;
+      return data;
+    });
+
+  }
+  vender(i)
+  {
+    console.log(i);
+    let myDate: string = new Date().toISOString();
+    let fecha=encodeURI(myDate);
+
+    let url='https://lycexpress.com/amelie/transaccion.php?opcion=4&cantidad='+this.pendientes[i].cantidad+'&precio='+this.pendientes[i].valor_moneda+'&fecha='+fecha+'&exchanger=YoBit.Net&moneda='+this.pendientes[i].moneda+'&id_usuario='+this.httpService.id_usuario;
+    
+    console.log(url);
+
     this.spint=true;
     this.httpService.httpr(url).subscribe((data) => 
     {
