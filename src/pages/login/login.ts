@@ -20,8 +20,8 @@ export class LoginPage {
   email:string;
   password:string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public HttpService:HttpconnectProvider) {
-    this.email="carlosjsanchezc@gmail.com";
-    this.password="cjsc";
+    this.email="miguelhernandez";
+    this.password="1234";
   }
 
   ionViewDidLoad() {
@@ -41,7 +41,7 @@ export class LoginPage {
         this.HttpService.nombre=data['nombre'];
         this.HttpService.apikey=data['apikey'];
         this.HttpService.apisign=data['apisign'];
- 
+        this.HttpService.id_usuario=data['id'];
         
         this.navCtrl.setRoot(TabsPage);
       }

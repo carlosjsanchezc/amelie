@@ -16,11 +16,14 @@ export class HomePage {
   saldo:number;
   spint:boolean;
   datos:any;
+  saldoBTC:number;
 
   constructor(public navCtrl: NavController,public httpService:HttpconnectProvider) {
     this.exchanger=this.httpService.exchanger;
     this.nombre=this.httpService.nombre;
     this.trades=0;
+    this.saldo=0;
+    this.saldoBTC=0;
     setInterval(() => {      
       console.log('timer');
       this.datosbot();
@@ -32,14 +35,17 @@ export class HomePage {
     console.log('ionViewDidLoad LoginPage');
     this.exchanger=this.httpService.exchanger;
     this.nombre=this.httpService.nombre;
-    let url="https://lycexpress.com/amelie/apiamelie.php?id_usuario=1&opcion=1";
+    let url="https://lycexpress.com/amelie/apiamelie.php?id_usuario="+this.httpService.id_usuario+"&opcion=1";
     
     this.httpService.httpr(url).subscribe((data) => 
     {
+      console.log(this.exchanger);
+      
       console.log(data);
       console.log(data['success']);
       console.log(data['return']['funds']);
       this.saldo=data['return']['funds']['usd'];
+      this.saldoBTC=data['return']['funds']['btc'];
 
       if (data['success']){
         this.msjapi="Verificada";
