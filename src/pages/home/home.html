@@ -6,163 +6,150 @@
 </ion-header>
 
 <ion-content padding>
-
-<ion-row>
-  <ion-col style="background-color:rgb(184, 59, 1);color:white">
-    <ion-row>
-      <ion-col>
-          <div text-center style="font-weight: bold">
-              Usuario
-          </div>
-          <div text-center style="font-size: 1.2rem">
-            <br>
-              {{nombre}}
-          </div>
-
-      </ion-col>
-      <ion-col>
-        <img src="assets/imgs/idusuario.png">
-      </ion-col>
-    </ion-row>
-    
-  </ion-col>
-  <ion-col style="background-color:rgb(175, 12, 0);color:white">
-      <ion-row>
-          <ion-col >
+  <ion-grid style="border:2px linear black;padding:0" >
+    <ion-row >
+      <ion-col style="background-color:rgb(29, 33, 59);color:white;border:1px solid black;padding:0">
+        <ion-row>
+          <ion-col>
               <div text-center style="font-weight: bold">
-                  Trader
+                  Usuario
               </div>
               <div text-center style="font-size: 1.2rem">
                 <br>
-                  {{exchanger}}
+                  {{nombre}}
               </div>
-    
           </ion-col>
           <ion-col>
-            <img src="assets/imgs/exchanger.png">
+            <img src="assets/imgs/idusuario.png">
           </ion-col>
         </ion-row>
-  </ion-col>
-</ion-row>
-<ion-row>
-    <ion-col style="background-color:rgb(194, 83, 32);color:white">
-      <ion-row>
-        <ion-col>
-            <div text-center style="font-weight: bold">
-                Balance
-            </div>
-            <div text-center style="font-size: 1.2rem">
-              <br>
-                {{saldo}} USD <br>
-                {{saldoBTC}} BTC
-
-            </div>
-  
-        </ion-col>
-        <ion-col>
-          <img src="assets/imgs/balance.png">
-        </ion-col>
-      </ion-row>
-      
-    </ion-col>
-    <ion-col style="background-color:rgb(170, 30, 20);color:white">
+      </ion-col>
+      <ion-col style="background-color:rgb(29, 33, 59);color:white;border:1px solid black;padding:0">
         <ion-row>
-            <ion-col>
+            <ion-col >
                 <div text-center style="font-weight: bold">
-                    Trades Abiertos
+                    Trader
                 </div>
                 <div text-center style="font-size: 1.2rem">
                   <br>
-                   {{trades}}
+                    {{exchanger}}
                 </div>
       
             </ion-col>
             <ion-col>
-              <img src="assets/imgs/openorders.png">
+              <img src="assets/imgs/exchanger.png">
             </ion-col>
           </ion-row>
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-      <ion-col style="background-color:rgb(197, 105, 62);color:white">
+      </ion-col>
+    </ion-row>
+    <ion-row >
+      <ion-col style="background-color:rgb(29, 33, 59);color:white;border:1px solid black;padding:0">
         <ion-row>
           <ion-col>
               <div text-center style="font-weight: bold">
-                  Estado Bots
+                  Balance
               </div>
               <div text-center style="font-size: 1.2rem">
                 <br>
-                  Activos
+                  {{saldo}} USD <br>
+                  {{saldoBTC}} BTC
+
               </div>
     
           </ion-col>
           <ion-col>
-            <img src="assets/imgs/bot.png">
+            <img src="assets/imgs/balance.png">
           </ion-col>
         </ion-row>
-        
       </ion-col>
-      <ion-col style="background-color:rgb(163, 51, 43);color:white">
+      <ion-col style="background-color:rgb(29, 33, 59);color:white;border:1px solid black;padding:0">
           <ion-row>
               <ion-col>
                   <div text-center style="font-weight: bold">
-                      Apis Keys
+                      Trades Abiertos
                   </div>
                   <div text-center style="font-size: 1.2rem">
                     <br>
-                     {{msjapi}}
+                    {{trades}}
                   </div>
         
               </ion-col>
               <ion-col>
-                <img src="assets/imgs/key.png">
+                <img src="assets/imgs/openorders.png">
               </ion-col>
             </ion-row>
       </ion-col>
     </ion-row>
-    <ion-refresher (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content  pullingText="Pull to refresh..." pullingIcon="arrow-dropdown"
-        pullingText="Pull to refresh"
-        refreshingSpinner="circles"
-        refreshingText="Actualizando Datos...">
-        </ion-refresher-content>
-      </ion-refresher>
-    <ion-list>
 
-      <ion-item>
-
-
-              <div text-center style="font-weight: bold">Trades Abiertos</div>
-
+    <ion-row>
+        <ion-col style="background-color:rgb(29, 33, 59);color:white;border:1px solid black;padding:0">
+          <ion-row>
+            <ion-col>
+                <div text-center style="font-weight: bold">
+                    Estado Bots
+                </div>
+                <div text-center style="font-size: 1.2rem">
+                  <br>
+                    Activos
+                </div>
       
-  
-      
+            </ion-col>
+            <ion-col>
+              <img src="assets/imgs/bot.png">
+            </ion-col>
+          </ion-row>
+          
+        </ion-col>
+        <ion-col style="background-color:rgb(29,33,59);color:white;border:1px solid black;padding:0">
+            <ion-row>
+                <ion-col>
+                    <div text-center style="font-weight: bold">
+                        Apis Keys
+                    </div>
+                    <div text-center style="font-size: 1.2rem">
+                      <br>
+                      {{msjapi}}
+                    </div>
+          
+                </ion-col>
+                <ion-col>
+                  <img src="assets/imgs/key.png">
+                </ion-col>
+              </ion-row>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content  pullingText="Pull to refresh..." pullingIcon="arrow-dropdown"
+    pullingText="Pull to refresh"
+    refreshingSpinner="circles"
+    refreshingText="Actualizando Datos...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item>
+      <div text-center style="font-weight: bold">Trades Abiertos</div>
+    </ion-item>
+    <ion-item-sliding *ngFor="let pendiente of pendientes;let i=index">
+      <ion-item >
+        <ion-avatar>{{pendiente.moneda}}</ion-avatar>
+        <h3>Fecha Compra:{{pendiente.fecha}}</h3>
+        <h3>Precio de Compra:{{pendiente.compra}} USD</h3>
+        <h3>Cantidad Comprada:{{pendiente.cantidad}}</h3> 
+        <h3>Inversion:{{pendiente.inversion}}</h3>
+        <h3>Precio Actual:{{pendiente.valor_moneda}} USD</h3> 
+        <h3>Profit:{{pendiente.profit}}USD</h3>
+        <h3>Variación:
+        <ion-badge color="secondary" *ngIf="pendiente.variacion>0">{{pendiente.variacion}}%</ion-badge>
+        <ion-badge color="danger" *ngIf="pendiente.variacion<0">{{pendiente.variacion}}%</ion-badge>
+        </h3> 
       </ion-item>
-      
-          <ion-item-sliding *ngFor="let pendiente of pendientes;let i=index">
-            <ion-item >
-              <ion-avatar>{{pendiente.moneda}}</ion-avatar>
-              <h3>Fecha Compra:{{pendiente.fecha}}</h3>
-              <h3>Precio de Compra:{{pendiente.compra}} USD</h3>
-              <h3>Cantidad Comprada:{{pendiente.cantidad}}</h3> 
-              <h3>Inversion:{{pendiente.inversion}}</h3>
-              <h3>Precio Actual:{{pendiente.valor_moneda}} USD</h3> 
-              <h3>Profit:{{pendiente.profit}}USD</h3>
-              <h3>Variación:
-              <ion-badge color="secondary" *ngIf="pendiente.variacion>0">{{pendiente.variacion}}%</ion-badge>
-              <ion-badge color="danger" *ngIf="pendiente.variacion<0">{{pendiente.variacion}}%</ion-badge>
-              </h3> 
-            </ion-item>
-            <ion-item-options side="right">
-              <button ion-button color="secondary" (click)="vender(i)" >
-              <ion-icon name="cash"></ion-icon>
-                  Vender
-              </button>
-            </ion-item-options>
-          </ion-item-sliding>
-
-    </ion-list>
-  
-
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)="vender(i)" >
+        <ion-icon name="cash"></ion-icon>
+            Vender
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
