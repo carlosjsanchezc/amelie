@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpconnectProvider } from '../../providers/httpconnect/httpconnect';
 
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
