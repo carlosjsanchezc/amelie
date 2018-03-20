@@ -27,6 +27,7 @@ export class HomePage {
     setInterval(() => {      
       console.log('timer');
       this.datosbot();
+      this.ionViewDidLoad();
       //you can call function here
 },30000);
 
@@ -84,13 +85,13 @@ export class HomePage {
     });
 
   }
-  vender(i)
+  vender(i,id)
   {
     console.log(i);
     let myDate: string = new Date().toISOString();
     let fecha=encodeURI(myDate);
 
-    let url='https://lycexpress.com/amelie/transaccion.php?opcion=4&cantidad='+this.pendientes[i].cantidad+'&precio='+this.pendientes[i].valor_moneda+'&fecha='+fecha+'&exchanger=YoBit.Net&moneda='+this.pendientes[i].moneda+'&id_usuario='+this.httpService.id_usuario;
+    let url='https://lycexpress.com/amelie/transaccion.php?opcion=4&cantidad='+this.pendientes[i].cantidad+'&precio='+this.pendientes[i].valor_moneda+'&fecha='+fecha+'&exchanger='+this.httpService.exchanger+'&moneda='+this.pendientes[i].moneda+'&id='+id+'&id_usuario='+this.httpService.id_usuario;
     
     console.log(url);
 
