@@ -39,20 +39,26 @@ export class HomePage {
     
     this.httpService.httpr(url).subscribe((data) => 
     {
-      console.log(this.exchanger);
-      
-      console.log(data);
-      console.log(data['success']);
-      console.log(data['return']['funds']);
-      this.saldo=data['return']['funds']['usd'];
-      this.saldoBTC=data['return']['funds']['btc'];
+      if (data)
+      {
+        console.log(this.exchanger);
+        
+        console.log(data);
+        console.log(data['success']);
+        console.log(data['return']['funds']);
+        this.saldo=data['return']['funds']['usd'];
+        this.saldoBTC=data['return']['funds']['btc'];
 
-      if (data['success']){
-        this.msjapi="Verificada";
+        if (data['success']){
+          this.msjapi="Verificada";
+        }
+        else
+        { 
+          this.msjapi="Hay problemas con las claves"
+        }
       }
-      else{ this.msjapi="Hay problemas con las claves"}
-      
     });
+  
     this.datosbot();
   }
 
