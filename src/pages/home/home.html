@@ -138,20 +138,21 @@
             </ion-avatar>
             <h2>{{pendiente.moneda}}</h2>
             <p style="font-size: 1rem">Fecha Compra:{{pendiente.fecha}}</p>
+            <p style="font-size: 1rem">Hora:{{pendiente.hora}}</p>
             <p style="font-size: 1rem">Precio:{{pendiente.compra}} USD</p>
             <p style="font-size: 1rem">Cantidad:{{pendiente.cantidad}}</p> 
             <p style="font-size: 1rem">Inversion:{{pendiente.inversion}}</p>
             <p style="font-size: 1rem">Precio Actual:{{pendiente.valor_moneda}} USD</p> 
             <p style="font-size: 1rem">Profit:{{pendiente.profit}}USD</p>
-            <ion-note item-end><ion-badge color="secondary" *ngIf="pendiente.variacion>0">{{pendiente.variacion}}%</ion-badge><ion-badge color="danger" *ngIf="pendiente.variacion<0">{{pendiente.variacion}}%</ion-badge></ion-note>
-            <ion-item-options side="right">
-                <button ion-button color="secondary" (click)="vender(i,pendiente.id)" >
-                <ion-icon name="cash"></ion-icon>
-                    Vender
-                </button>
-              </ion-item-options>
-          </ion-item>
+            <ion-note item-end ><ion-badge color="secondary" *ngIf="pendiente.variacion>0" style="font-size: 1rem">{{pendiente.variacion}}%</ion-badge><ion-badge color="danger" *ngIf="pendiente.variacion<0" style="font-size: 1rem">{{pendiente.variacion}}%</ion-badge></ion-note>
       
+          </ion-item>
+          <ion-item-options side="right">
+              <button ion-button color="secondary" (click)="vender(i,pendiente.id)" >
+              <ion-icon name="cash"></ion-icon>
+                  Vender
+              </button>
+            </ion-item-options>
     </ion-item-sliding>
   </ion-list>
 </ion-content>
