@@ -14,11 +14,22 @@ export class ContactPage {
   constructor(public navCtrl: NavController,public httpService:HttpconnectProvider) {
 this.cargahistorial();
   }
+
+
+
+
   doRefresh(refresher) {
     
     this.cargahistorial();
     refresher.complete();
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+    
   }
+
   cancelarorden(id)
 
   {
@@ -37,7 +48,7 @@ this.cargahistorial();
     {
       this.ordenesa=data['abiertas'];
       console.log('Longitud:');
-      console.log(this.ordenesa.length);
+      console.log(this.ordenesa);
       for (let index = 0; index < this.ordenesa.length; index++) {
         
         if (this.ordenesa[index].side=="sell") 
@@ -61,7 +72,7 @@ this.cargahistorial();
       }
       this.ordenesc=data['cerradas'];
       console.log('Longitud:');
-      console.log(this.ordenesc.length);
+      console.log(this.ordenesc);
       for (let index = 0; index < this.ordenesc.length; index++) {
         
         if (this.ordenesc[index].side=="sell") 

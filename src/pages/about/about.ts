@@ -24,7 +24,9 @@ export class AboutPage {
     let url="https://lycexpress.com/amelie/monedas.php?id_usuario="+id;
     
     this.HttpService.httpr(url).subscribe((data) => 
+    
     {
+      console.log('Data monedas');
       console.log(data);
       if (data['success']=='true')
       {
