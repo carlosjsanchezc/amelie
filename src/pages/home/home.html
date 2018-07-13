@@ -130,26 +130,28 @@
     <ion-item>
       <div text-center style="font-weight: bold">Trades Abiertos</div>
     </ion-item>
+
     <ion-item-sliding *ngFor="let pendiente of pendientes;let i=index">
-      <ion-item >
-        <ion-avatar>{{pendiente.moneda}}</ion-avatar>
-        <h3>Fecha Compra:{{pendiente.fecha}}</h3>
-        <h3>Precio de Compra:{{pendiente.compra}} USD</h3>
-        <h3>Cantidad Comprada:{{pendiente.cantidad}}</h3> 
-        <h3>Inversion:{{pendiente.inversion}}</h3>
-        <h3>Precio Actual:{{pendiente.valor_moneda}} USD</h3> 
-        <h3>Profit:{{pendiente.profit}}USD</h3>
-        <h3>Variación:
-        <ion-badge color="secondary" *ngIf="pendiente.variacion>0">{{pendiente.variacion}}%</ion-badge>
-        <ion-badge color="danger" *ngIf="pendiente.variacion<0">{{pendiente.variacion}}%</ion-badge>
-        </h3> 
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="secondary" (click)="vender(i,pendiente.id)" >
-        <ion-icon name="cash"></ion-icon>
-            Vender
-        </button>
-      </ion-item-options>
+        <ion-item>
+            <ion-avatar item-start>
+              <img src="assets/imgs/{{pendiente.imagen}}">
+            </ion-avatar>
+            <h2>{{pendiente.moneda}}</h2>
+            <p style="font-size: 1rem">Fecha Compra:{{pendiente.fecha}}</p>
+            <p style="font-size: 1rem">Precio:{{pendiente.compra}} USD</p>
+            <p style="font-size: 1rem">Cantidad:{{pendiente.cantidad}}</p> 
+            <p style="font-size: 1rem">Inversion:{{pendiente.inversion}}</p>
+            <p style="font-size: 1rem">Precio Actual:{{pendiente.valor_moneda}} USD</p> 
+            <p style="font-size: 1rem">Profit:{{pendiente.profit}}USD</p>
+            <ion-note item-end><ion-badge color="secondary" *ngIf="pendiente.variacion>0">{{pendiente.variacion}}%</ion-badge><ion-badge color="danger" *ngIf="pendiente.variacion<0">{{pendiente.variacion}}%</ion-badge></ion-note>
+            <ion-item-options side="right">
+                <button ion-button color="secondary" (click)="vender(i,pendiente.id)" >
+                <ion-icon name="cash"></ion-icon>
+                    Vender
+                </button>
+              </ion-item-options>
+          </ion-item>
+      
     </ion-item-sliding>
   </ion-list>
 </ion-content>
