@@ -133,9 +133,9 @@
 
     <ion-item-sliding *ngFor="let pendiente of pendientes;let i=index">
         <ion-item>
-            <ion-avatar item-start>
+            <ion-thumbnail item-start>
               <img src="assets/imgs/{{pendiente.imagen}}">
-            </ion-avatar>
+            </ion-thumbnail>
             <h2>{{pendiente.moneda}}</h2>
             <p style="font-size: 1rem">Fecha Compra:{{pendiente.fecha}}</p>
             <p style="font-size: 1rem">Hora:{{pendiente.hora}}</p>
