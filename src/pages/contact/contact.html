@@ -1,12 +1,13 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ordenes Colocadas
-    </ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Resumen Ordenes</ion-title>
+   
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+
+
     <ion-refresher (ionRefresh)="doRefresh($event)">
         <ion-refresher-content  pullingText="Pull to refresh..." pullingIcon="arrow-dropdown"
         pullingText="Pull to refresh"
@@ -66,37 +67,60 @@
                     <p style="font-size: 1rem">Cantidad:{{orden.cantidad}}</p>
                     
 
-                    <ion-note item-end ><ion-badge color="secondary" *ngIf="orden.ganancia>=0" style="font-size: 1rem">{{orden.ganancia}}</ion-badge><ion-badge color="danger" *ngIf="orden.ganancia<0" style="font-size: 1rem">{{orden.ganancia}}</ion-badge></ion-note>
+                    <ion-note item-end ><ion-badge color="secondary" *ngIf="orden.ganancia>=0" style="font-size: 0.8rem">{{orden.ganancia}}</ion-badge><ion-badge color="danger" *ngIf="orden.ganancia<0" style="font-size: 0.8rem">{{orden.ganancia}}</ion-badge></ion-note>
               
 
 
 
 
     </ion-item>
-    <ion-list-header>
-            Transacciones Manuales
+          <ion-list-header>
+            Compras
           </ion-list-header>
-    <ion-item *ngFor="let orden of ordenesnr;let i=index">
+          <ion-item *ngFor="let orden of compras;let i=index">
           
             <ion-thumbnail item-start>
-            <img src="assets/imgs/{{orden.imagen}}">
-          </ion-thumbnail>
+              <img src="assets/imgs/{{orden.imagen}}">
+            </ion-thumbnail>
             <p>{{orden.moneda}}</p>
             <p style="font-size: 1rem">Fecha Compra:{{orden.fechacompra}}</p>
             <p style="font-size: 1rem">Hora Compra:{{orden.horacompra}}</p>
-            <p style="font-size: 1rem">Fecha Venta:{{orden.fechaventa}}</p>
-            <p style="font-size: 1rem">Hora Venta:{{orden.horaventa}}</p>
+
             <p style="font-size: 1rem">Precio Compra:{{orden.preciocompra}}</p>
-            <p style="font-size: 1rem">Precio Venta:{{orden.precioventa}}</p>
+
             <p style="font-size: 1rem">Inversión:{{orden.inversion}}</p>
 
             <p style="font-size: 1rem">Cantidad:{{orden.cantidad}}</p>
             
 
-            <ion-note item-end ><ion-badge color="secondary" *ngIf="orden.ganancia>=0" style="font-size: 1rem">{{orden.ganancia}}</ion-badge><ion-badge color="danger" *ngIf="orden.ganancia<0" style="font-size: 1rem">{{orden.ganancia}}</ion-badge></ion-note>
- 
-</ion-item>
+            <ion-note item-end ><ion-badge color="danger" style="font-size: 0.8rem;">{{orden.venta}}</ion-badge></ion-note>
+              
+        </ion-item>
     <ion-item>
+      </ion-item>
+      <ion-list-header>
+        Ventas
+      </ion-list-header>
+      <ion-item *ngFor="let orden of ventas;let i=index">
+      
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/{{orden.imagen}}">
+        </ion-thumbnail>
+        <p>{{orden.moneda}}</p>
+
+        <p style="font-size: 1rem">Fecha Venta:{{orden.fechaventa}}</p>
+        <p style="font-size: 1rem">Hora Venta:{{orden.horaventa}}</p>
+
+        <p style="font-size: 1rem">Precio Venta:{{orden.precioventa}}</p>
+        <p style="font-size: 1rem">Venta:{{orden.venta}}</p>
+
+        <p style="font-size: 1rem">Cantidad:{{orden.cantidad}}</p>
+        
+
+        <ion-note item-end ><ion-badge color="secondary"  style="font-size: 0.8rem">{{orden.venta}}</ion-badge></ion-note>
+    </ion-item>
+<ion-item>
+
         <h1>Balance Robot:{{balancerobot}}</h1>
 
     </ion-item>

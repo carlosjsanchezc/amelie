@@ -15,6 +15,9 @@ export class ContactPage {
   ordenesc:any[]=[];
   ordenesr:any[]=[];
   ordenesnr:any[]=[];
+  compras:any[]=[];
+  ventas:any[]=[];
+  
   
   monedas:any[]=[];
   monedas_server:any[]=[];
@@ -29,7 +32,7 @@ this.cargarmonedas();
   doRefresh(refresher) {
     
     this.cargahistorial();
-    refresher.complete();
+  
 
     setTimeout(() => {
       console.log('Async operation has ended');
@@ -83,7 +86,10 @@ this.cargarmonedas();
     {
       this.ordenesa=data['abiertas'];
       this.ordenesr=data['resumen'];
-      this.ordenesnr=data['resumennr'];
+      this.compras=data['compras'];
+      this.ventas=data['ventas'];
+
+
       console.log("Ordenes manuales");
       console.log(this.ordenesnr);
       this.balance=data['balance'];
@@ -116,23 +122,44 @@ this.cargarmonedas();
       }
 
 
-      for (let index = 0; index < this.ordenesnr.length; index++) {
+      for (let index = 0; index < this.compras.length; index++) {
         for (let k = 0; k < this.monedas.length; k++) {
           var s3:string;
-          s3=this.ordenesnr[index].moneda;
+          s3=this.compras[index].moneda;
 
           var s=s3.indexOf(this.monedas[k].simbolo);
 
 
           if (s!=-1){
 
-            this.ordenesnr[index].imagen=this.monedas[k].imagen;
+            this.compras[index].imagen=this.monedas[k].imagen;
           }
 
 
           
         }
       }
+
+
+      for (let index = 0; index < this.ventas.length; index++) {
+        for (let k = 0; k < this.monedas.length; k++) {
+          var s3:string;
+          s3=this.ventas[index].moneda;
+
+          var s=s3.indexOf(this.monedas[k].simbolo);
+
+
+          if (s!=-1){
+
+            this.ventas[index].imagen=this.monedas[k].imagen;
+          }
+
+
+          
+        }
+      }
+
+
 
       for (let index = 0; index < this.ordenesa.length; index++) {
         
