@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpconnectProvider } from '../../providers/httpconnect/httpconnect';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-home',
@@ -62,6 +63,10 @@ export class HomePage {
     this.datosbot();
   }
 
+  logoff()
+  {
+    this.navCtrl.setRoot(LoginPage);
+  }
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
     this.datosbot();

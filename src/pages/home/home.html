@@ -1,7 +1,11 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>Dashboard</ion-title>
-   
+    <ion-note item-end>          
+        <button ion-button icon-left (click)="logoff()">
+          <ion-icon name="exit"  item-end ></ion-icon>
+        </button>
+    </ion-note>
   </ion-navbar>
 </ion-header>
 
@@ -139,7 +143,7 @@
     <ion-item-sliding *ngFor="let pendiente of pendientes;let i=index">
         <ion-item>
             <ion-thumbnail item-start>
-              <img src="assets/imgs/{{pendiente.imagen}}">
+              <img src="http://lycexpress.com/amelie/images/{{pendiente.imagen}}">
             </ion-thumbnail>
             <h2>{{pendiente.moneda}}</h2>
             <p style="font-size: 1rem">Fecha Compra:{{pendiente.fecha}}</p>

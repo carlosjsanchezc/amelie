@@ -143,10 +143,10 @@ this.cargarmonedas();
 
       for (let index = 0; index < this.ventas.length; index++) {
         for (let k = 0; k < this.monedas.length; k++) {
-          var s3:string;
+         
           s3=this.ventas[index].moneda;
 
-          var s=s3.indexOf(this.monedas[k].simbolo);
+          s=s3.indexOf(this.monedas[k].simbolo);
 
 
           if (s!=-1){

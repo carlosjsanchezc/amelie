@@ -36,19 +36,11 @@
         <h2 text-center>Monedas que desea tradear</h2>
       </ion-item>
       <ion-item *ngFor="let moneda of monedas;let i=index">
-        <ion-checkbox  [(ngModel)]="moneda.estado" checked="{{moneda.estado}}" ></ion-checkbox>
-             
-              <ion-label style="font-size:0.8rem">
-                  <img src="assets/imgs/{{moneda.imagen}}" style="height: 16px">
-              
-                  {{moneda.nombre}}/{{moneda.simbolo}}
-
-              </ion-label>
-
-
-            
-              
-          
+          <ion-label style="font-size:1.2rem;font-weight: bold">
+          <h2 style="font-size:1.2rem;font-weight: bold">{{moneda.nombre}}/{{moneda.simbolo}}</h2>
+          </ion-label>
+          <ion-checkbox  [(ngModel)]="moneda.estado" checked="{{moneda.estado}}" disabled="true"></ion-checkbox>
+          <ion-note item-end>   <img src="http://lycexpress.com/amelie/images/{{moneda.imagen}}" style="height: 32px"></ion-note>
       </ion-item>
   </ion-list>
   <button ion-button block (click)="salvar()">
