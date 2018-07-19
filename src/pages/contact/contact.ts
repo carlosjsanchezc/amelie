@@ -84,10 +84,9 @@ this.cargarmonedas();
     let url="https://lycexpress.com/amelie/apiamelie.php?id_usuario="+this.httpService.id_usuario+"&opcion=5";
     this.httpService.httpr(url).subscribe((data) => 
     {
-      this.ordenesa=data['abiertas'];
+
       this.ordenesr=data['resumen'];
-      this.compras=data['compras'];
-      this.ventas=data['ventas'];
+
 
 
       console.log("Ordenes manuales");
@@ -95,143 +94,17 @@ this.cargarmonedas();
       this.balance=data['balance'];
       this.balancerobot=data['balancerobot'];
       
-      console.log('cerradas:');
-      console.log(this.ordenesc);
-      console.log('Resumen:xxxx');
-      console.log(this.ordenesr);
-      console.log('Balance');
-      console.log(data['balance']);
-      console.log("monedas");
-      console.log(this.monedas);
-      for (let index = 0; index < this.ordenesr.length; index++) {
-        for (let k = 0; k < this.monedas.length; k++) {
-          var s3:string;
-          s3=this.ordenesr[index].moneda;
 
-          var s=s3.indexOf(this.monedas[k].simbolo);
-
-
-          if (s!=-1){
-
-            this.ordenesr[index].imagen=this.monedas[k].imagen;
-          }
-
-
-          
-        }
-      }
-
-
-      for (let index = 0; index < this.compras.length; index++) {
-        for (let k = 0; k < this.monedas.length; k++) {
-          var s3:string;
-          s3=this.compras[index].moneda;
-
-          var s=s3.indexOf(this.monedas[k].simbolo);
-
-
-          if (s!=-1){
-
-            this.compras[index].imagen=this.monedas[k].imagen;
-          }
-
-
-          
-        }
-      }
-
-
-      for (let index = 0; index < this.ventas.length; index++) {
-        for (let k = 0; k < this.monedas.length; k++) {
-         
-          s3=this.ventas[index].moneda;
-
-          s=s3.indexOf(this.monedas[k].simbolo);
-
-
-          if (s!=-1){
-
-            this.ventas[index].imagen=this.monedas[k].imagen;
-          }
-
-
-          
-        }
-      }
+      
 
 
 
-      for (let index = 0; index < this.ordenesa.length; index++) {
-        
-        if (this.ordenesa[index].side=="sell") 
-        {
-          this.ordenesa[index].side="Venta";
-        }
-        if (this.ordenesa[index].side=="buy") 
-        {
-          this.ordenesa[index].side="Compra";
-        }
 
-        if (this.ordenesa[index].status=="closed") 
-        {
-          this.ordenesa[index].status="Cerrado";
-        }
-        if (this.ordenesa[index].status=="open") 
-        {
-          this.ordenesa[index].status="Abierta";
-        }
-
-      }
-      this.ordenesc=data['cerradas'];
-      console.log('Longitud:');
-      console.log(this.ordenesc);
-      for (let index = 0; index < this.ordenesc.length; index++) {
-        
-        if (this.ordenesc[index].side=="sell") 
-        {
-          this.ordenesc[index].side="Venta";
-        }
-        if (this.ordenesc[index].side=="buy") 
-        {
-          this.ordenesc[index].side="Compra";
-        }
-
-        if (this.ordenesc[index].status=="closed") 
-        {
-          this.ordenesc[index].status="Cerrado";
-        }
-        if (this.ordenesc[index].status=="open") 
-        {
-          this.ordenesc[index].status="Abierta";
-        }
-
-      }
-      for (let index = 0; index < this.ordenesc.length; index++) 
-      {
-
-        if (this.ordenesc[index]=="Venta")
-        {
-          for (let k = 0; index < this.ordenesc.length; k++) 
-          {
-            if (this.ordenesc[k].side=="Compra")
-            {
-              if ((this.ordenesc[index].amount==this.ordenesc[k].amount)||(this.ordenesc[index].price==this.ordenesc[k].price))
-              {
-              
-              }
-            }
-          }
-        }
-
+      
+     
     
     
   
-        
-      }
-
-
-      console.log('ordenes:');
-      console.log(this.ordenesa);
     });
 
 

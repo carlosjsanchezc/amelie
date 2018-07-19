@@ -16,37 +16,8 @@
         </ion-refresher-content>
       </ion-refresher>
   <ion-list>
-        <ion-list-header>
-                Transacciones Hold
-              </ion-list-header>
-    <ion-item-sliding *ngFor="let orden of ordenesa;let i=index">
-
-      <ion-item>
-        <ion-row>
-            <ion-col col-4 style="font-size: 1rem">
-                <h2>{{orden.symbol}}</h2>
-            </ion-col>
-
-          <ion-col col-6 style="font-size: 1.1rem"> 
-                <p>Tipo:{{orden.side}}</p>
-                <p>Cantidad:{{orden.amount}}</p>
-                <p>Monto:{{orden.cost}}</p>
-                <p>Precio Esperado:{{orden.price}}</p>
-                <p>Fecha:{{orden.datetime}}</p>
-            </ion-col>
-
-
-
-        </ion-row>
-      </ion-item>
-      <ion-item-options side="right">
-          <button ion-button color="danger" (click)="cancelarorden(orden.id)" >
-          <ion-icon name="cash"></ion-icon>
-              Cancelar Orden
-          </button>
-        </ion-item-options>
-    </ion-item-sliding>
-    <ion-list-header>
+        
+    <ion-list-header style="font-size: 1.8rem;font-weight: bold">
             Transacciones Robot
           </ion-list-header>
     <ion-item *ngFor="let orden of ordenesr;let i=index">
@@ -74,59 +45,7 @@
 
 
     </ion-item>
-          <ion-list-header>
-            Compras
-          </ion-list-header>
-          <ion-item *ngFor="let orden of compras;let i=index">
           
-            <ion-thumbnail item-start>
-              <img src="http://lycexpress.com/amelie/images/{{orden.imagen}}">
-            </ion-thumbnail>
-            <p>{{orden.moneda}}</p>
-            <p style="font-size: 1rem">Fecha Compra:{{orden.fechacompra}}</p>
-            <p style="font-size: 1rem">Hora Compra:{{orden.horacompra}}</p>
 
-            <p style="font-size: 1rem">Precio Compra:{{orden.preciocompra}}</p>
-
-            <p style="font-size: 1rem">Inversión:{{orden.inversion}}</p>
-
-            <p style="font-size: 1rem">Cantidad:{{orden.cantidad}}</p>
-            
-
-            <ion-note item-end ><ion-badge color="danger" style="font-size: 0.8rem;">{{orden.venta}}</ion-badge></ion-note>
-              
-        </ion-item>
-    <ion-item>
-      </ion-item>
-      <ion-list-header>
-        Ventas
-      </ion-list-header>
-      <ion-item *ngFor="let orden of ventas;let i=index">
-      
-        <ion-thumbnail item-start>
-          <img src="http://lycexpress.com/amelie/images/{{orden.imagen}}">
-        </ion-thumbnail>
-        <p>{{orden.moneda}}</p>
-
-        <p style="font-size: 1rem">Fecha Venta:{{orden.fechaventa}}</p>
-        <p style="font-size: 1rem">Hora Venta:{{orden.horaventa}}</p>
-
-        <p style="font-size: 1rem">Precio Venta:{{orden.precioventa}}</p>
-        <p style="font-size: 1rem">Venta:{{orden.venta}}</p>
-
-        <p style="font-size: 1rem">Cantidad:{{orden.cantidad}}</p>
-        
-
-        <ion-note item-end ><ion-badge color="secondary"  style="font-size: 0.8rem">{{orden.venta}}</ion-badge></ion-note>
-    </ion-item>
-<ion-item>
-
-        <h1>Balance Robot:{{balancerobot}}</h1>
-
-    </ion-item>
-    <ion-item>
-            <h1>Balance Total:{{balance}}</h1>
-            
-        </ion-item>
   </ion-list>
 </ion-content>
