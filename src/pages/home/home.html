@@ -1,11 +1,12 @@
 <ion-header>
   <ion-navbar color="primary">
+      <ion-note item-end>          
+          <button ion-button icon-left (click)="logoff()" item-end>
+            <ion-icon name="exit"  item-end ></ion-icon>
+          </button>
+      </ion-note>
     <ion-title>Dashboard</ion-title>
-    <ion-note item-end>          
-        <button ion-button icon-left (click)="logoff()">
-          <ion-icon name="exit"  item-end ></ion-icon>
-        </button>
-    </ion-note>
+
   </ion-navbar>
 </ion-header>
 
@@ -24,7 +25,7 @@
               </div>
           </ion-col>
           <ion-col>
-            <img src="http://lycexpress.com/amelie/images/idusuario.png">
+            <img src="http://midasbottraders.com/amelie/images/idusuario.png">
           </ion-col>
         </ion-row>
       </ion-col>
@@ -41,7 +42,7 @@
       
             </ion-col>
             <ion-col>
-              <img src="http://lycexpress.com/amelie/images/exchanger.png">
+              <img src="http://midasbottraders.com/amelie/images/exchanger.png">
             </ion-col>
           </ion-row>
       </ion-col>
@@ -57,7 +58,7 @@
     
           </ion-col>
           <ion-col>
-            <img src="http://lycexpress.com/amelie/images/balance.png">
+            <img src="http://midasbottraders.com/amelie/images/balance.png">
           </ion-col>
         </ion-row>
         <ion-row>
@@ -84,7 +85,7 @@
         
               </ion-col>
               <ion-col>
-                <img src="http://lycexpress.com/amelie/images/openorders.png">
+                <img src="http://midasbottraders.com/amelie/images/openorders.png">
               </ion-col>
             </ion-row>
       </ion-col>
@@ -104,7 +105,7 @@
       
             </ion-col>
             <ion-col>
-              <img src="http://lycexpress.com/amelie/images/bot.png">
+              <img src="http://midasbottraders.com/amelie/images/bot.png">
             </ion-col>
           </ion-row>
           
@@ -122,7 +123,7 @@
           
                 </ion-col>
                 <ion-col>
-                  <img src="http://lycexpress.com/amelie/images/key.png">
+                  <img src="http://midasbottraders.com/amelie/images/key.png">
                 </ion-col>
               </ion-row>
         </ion-col>
@@ -143,7 +144,7 @@
     <ion-item-sliding *ngFor="let pendiente of pendientes;let i=index">
         <ion-item>
             <ion-thumbnail item-start>
-              <img src="http://lycexpress.com/amelie/images/{{pendiente.imagen}}">
+              <img src="http://midasbottraders.com/amelie/images/{{pendiente.imagen}}">
             </ion-thumbnail>
             <h2>{{pendiente.moneda}}</h2>
             <p style="font-size: 1rem">Fecha Compra:{{pendiente.fecha}}</p>

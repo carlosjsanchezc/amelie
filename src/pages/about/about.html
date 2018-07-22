@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar> color="primary"
     <ion-title>
       Configuración
     </ion-title>
@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
+  <ion-list >
     <ion-item>
         <ion-label stacked>Exchanger</ion-label>
         <ion-input type="text" readonly="true" [(ngModel)]="exchanger"></ion-input>
@@ -35,13 +35,23 @@
       <ion-item>
         <h2 text-center>Monedas que desea tradear</h2>
       </ion-item>
-      <ion-item *ngFor="let moneda of monedas;let i=index">
-          <ion-label style="font-size:1.2rem;font-weight: bold">
-          <h2 style="font-size:1.2rem;font-weight: bold">{{moneda.nombre}}/{{moneda.simbolo}}</h2>
-          </ion-label>
-          <ion-checkbox  [(ngModel)]="moneda.estado" checked="{{moneda.estado}}" disabled="true"></ion-checkbox>
-          <ion-note item-end>   <img src="http://lycexpress.com/amelie/images/{{moneda.imagen}}" style="height: 32px"></ion-note>
-      </ion-item>
+        <div *ngFor="let moneda of monedas;let i=index">
+              <ion-item>
+                  <ion-label style="font-size:1.2rem;font-weight: bold">
+                      <h2 style="font-size:1.2rem;font-weight: bold">{{moneda.nombre}}/{{moneda.simbolo}}</h2>
+                      </ion-label>
+                      <ion-checkbox  [(ngModel)]="moneda.estado" checked="{{moneda.estado}}" disabled="true" ></ion-checkbox>
+                      <ion-note item-end><ion-badge>${{(moneda.monto).toLocaleString('de-ge', {minimumFractionDigits: 2})}}</ion-badge><img src="http://midasbottraders.com/amelie/images/{{moneda.imagen}}" style="height: 32px"></ion-note>
+            
+              </ion-item>
+           
+              
+
+            
+        </div>
+        <!-- <button ion-button block (click)="salvar()">Guardar</button> -->
+
+
   </ion-list>
 
 </ion-content>

@@ -36,7 +36,7 @@ export class HomePage {
     console.log('ionViewDidLoad LoginPage');
     this.exchanger=this.httpService.exchanger;
     this.nombre=this.httpService.nombre;
-    let url="https://lycexpress.com/amelie/apiamelie.php?id_usuario="+this.httpService.id_usuario+"&opcion=1";
+    let url="https://midasbottraders.com/amelie/apiamelie.php?id_usuario="+this.httpService.id_usuario+"&opcion=1";
     
     this.httpService.httpr(url).subscribe((data) => 
     {
@@ -83,7 +83,7 @@ export class HomePage {
     console.log('Obteniendo Datos');
     this.exchanger=this.httpService.exchanger;
     this.nombre=this.httpService.nombre;
-    let url="https://lycexpress.com/amelie/apiamelie.php?id_usuario="+this.httpService.id_usuario+"&opcion=2";
+    let url="https://midasbottraders.com/amelie/apiamelie.php?id_usuario="+this.httpService.id_usuario+"&opcion=2";
     this.spint=true;
     this.httpService.httpr(url).subscribe((data) => 
     {
@@ -101,7 +101,7 @@ export class HomePage {
     let myDate: string = new Date().toISOString();
     let fecha=encodeURI(myDate);
 
-    let url='https://lycexpress.com/amelie/transaccion.php?opcion=4&cantidad='+this.pendientes[i].cantidad+'&precio='+this.pendientes[i].valor_moneda+'&fecha='+fecha+'&exchanger='+this.httpService.exchanger+'&moneda='+this.pendientes[i].moneda+'&id='+id+'&id_usuario='+this.httpService.id_usuario;
+    let url='https://midasbottraders.com/amelie/transaccion.php?opcion=4&cantidad='+this.pendientes[i].cantidad+'&precio='+this.pendientes[i].valor_moneda+'&fecha='+fecha+'&exchanger='+this.httpService.exchanger+'&moneda='+this.pendientes[i].moneda+'&id='+id+'&id_usuario='+this.httpService.id_usuario;
     
     console.log(url);
 

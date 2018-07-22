@@ -38,7 +38,7 @@ export class LoginPage {
   }
   validalogin()
   {
-    let url="https://lycexpress.com/amelie/validarlogin.php?email="+this.email+"&password="+this.password;
+    let url="https://midasbottraders.com/amelie/validarlogin.php?email="+this.email+"&password="+this.password;
     
     this.HttpService.httpr(url).subscribe((data) => 
     {
