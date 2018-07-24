@@ -7,7 +7,7 @@ import { Storage } from '@ionic/storage';
 /**
  * Generated class for the LoginPage page.
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
+ * See http://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
@@ -39,7 +39,7 @@ export class LoginPage {
   }
   validalogin()
   {
-    let url="https://midasbottraders.com/amelie/validarlogin.php?email="+this.email+"&password="+this.password;
+    let url="http://midasbottraders.com/amelie/validarlogin.php?email="+this.email+"&password="+this.password;
     
     this.HttpService.httpr(url).subscribe((data) => 
     {

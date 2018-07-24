@@ -22,12 +22,12 @@ export class AboutPage {
     let id=this.HttpService.id_usuario;
     console.log("monedas:");
     console.log(id);
-    let url="https://midasbottraders.com/amelie/monedas.php?id_usuario="+id;
+    let url="http://midasbottraders.com/amelie/monedas.php?id_usuario="+id;
     
     this.HttpService.httpr(url).subscribe((data) => 
     
     {
-      console.log('Data monedas');
+      console.log('Drata monedas');
       console.log(data);
       if (data['success']=='true')
       {
@@ -49,7 +49,7 @@ export class AboutPage {
     //this.monedas[i].estado=!this.monedas[i].estado;
     console.log(this.monedas);
     let m=JSON.stringify(this.monedas);
-    let url="https://midasbottraders.com/amelie/monedas_usuario.php?monedas="+m+"&id_usuario="+this.HttpService.id_usuario;
+    let url="http://midasbottraders.com/amelie/monedas_usuario.php?monedas="+m+"&id_usuario="+this.HttpService.id_usuario;
 
     console.log(m);
     this.HttpService.httpr(url).subscribe((data) => 
