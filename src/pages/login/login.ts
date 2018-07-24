@@ -19,6 +19,7 @@ import { Storage } from '@ionic/storage';
 export class LoginPage {
   email:string;
   password:string;
+  mimensaje:string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public HttpService:HttpconnectProvider,private storage: Storage) {
     storage.get('email').then((val) => {
       console.log('Your email is:', val);
@@ -45,6 +46,7 @@ export class LoginPage {
       console.log(data);
       if (data['success']=='true')
       {
+        this.mimensaje="Entrando...";
         console.log('Login true');
         this.HttpService.exchanger=data['exchanger'];
         this.HttpService.nombre=data['nombre'];
@@ -57,6 +59,10 @@ export class LoginPage {
 
 
         this.navCtrl.setRoot(TabsPage);
+      }
+      else
+      {
+        this.mimensaje="Clave o usuario inválido";
       }
      
     });

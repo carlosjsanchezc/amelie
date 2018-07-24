@@ -44,7 +44,7 @@ this.cargarmonedas();
   cancelarorden(id)
 
   {
-    let url="https://midasbottraders.com/amelie/apiamelie.php?id_usuario="+this.httpService.id_usuario+"&opcion=6&id_order="+id;
+    let url="http://midasbottraders.com/amelie/apiamelie.php?id_usuario="+this.httpService.id_usuario+"&opcion=6&id_order="+id;
     this.httpService.httpr(url).subscribe((data) => 
     {
       console.log('Cancelando Orden');
@@ -56,7 +56,7 @@ this.cargarmonedas();
   {
     let id=this.httpService.id_usuario;
     console.log(id);
-    let url="https://midasbottraders.com/amelie/monedas.php?id_usuario="+id;
+    let url="http://midasbottraders.com/amelie/monedas.php?id_usuario="+id;
     
     this.httpService.httpr(url).subscribe((data) => 
     
@@ -81,7 +81,7 @@ this.cargarmonedas();
 
   cargahistorial()
   {
-    let url="https://midasbottraders.com/amelie/apiamelie.php?id_usuario="+this.httpService.id_usuario+"&opcion=5";
+    let url="http://midasbottraders.com/amelie/apiamelie.php?id_usuario="+this.httpService.id_usuario+"&opcion=5";
     this.httpService.httpr(url).subscribe((data) => 
     {
 
