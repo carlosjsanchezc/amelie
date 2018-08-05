@@ -12,26 +12,7 @@
         <ion-label stacked>Exchanger</ion-label>
         <ion-input type="text" readonly="true" [(ngModel)]="exchanger"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label stacked>
-        <ion-icon name="unlock"></ion-icon>
-        API KEY
-      </ion-label>  
-      <ion-input name="apikey" readonly="true" type="text" [(ngModel)]="apikey" style="font-size:1.2rem">
-
-      </ion-input>
-
-    </ion-item>
-    <ion-item>
-        <ion-label stacked>
-          <ion-icon name="unlock"></ion-icon>
-          API SIGN
-        </ion-label>  
-        <ion-input name="signkey" readonly="true" type="text" [(ngModel)]="apisign" style="font-size:1.2rem">
-  
-        </ion-input>
-  
-      </ion-item>
+    
       <ion-item>
         <h2 text-center>Monedas que desea tradear</h2>
       </ion-item>
@@ -50,8 +31,11 @@
 
             
         </div>
-        <!-- <button ion-button block (click)="salvar()">Guardar</button> -->
+        <div *ngIf="nmonedas<1">
+          <button ion-button block (click)="salvar()">Guardar</button> 
 
+        </div>
+         
 
   </ion-list>
 
