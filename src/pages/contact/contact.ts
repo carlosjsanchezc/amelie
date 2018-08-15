@@ -7,6 +7,10 @@ import { HttpconnectProvider } from '../../providers/httpconnect/httpconnect';
   templateUrl: 'contact.html'
 })
 export class ContactPage {
+  ionViewWillEnter(){
+    //calling an API
+  this.cargahistorial();  
+  }
   id_usuario:number;
   id_exchanger:number;
   balancerobot:number;

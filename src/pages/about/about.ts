@@ -12,7 +12,9 @@ export class AboutPage {
   apisign: string;
   exchanger: string;
   nmonedas:number;
+  modificando:boolean;
   constructor(public navCtrl: NavController, public HttpService: HttpconnectProvider) {
+    this.modificando=true;
     this.cargarmonedas();
     this.apikey = this.HttpService.apikey;
     this.apisign = this.HttpService.apisign;
@@ -22,7 +24,7 @@ export class AboutPage {
     let id = this.HttpService.id_usuario;
     console.log("monedas:");
     this.nmonedas=0;
-    console.log(id);
+    console.log(this.nmonedas);
     let url = "http://midasbottraders.com/amelie/monedas.php?id_usuario=" + id;
 
     this.HttpService.httpr(url).subscribe((data) => {
@@ -30,15 +32,22 @@ export class AboutPage {
       console.log(data);
       if (data['success'] == 'true') {
         this.monedas = data['coins'];
-        this.nmonedas=this.monedas.length;
+        
         console.log(this.monedas.length);
         for (let index = 0; index < this.monedas.length; index++) {
           this.monedas_server.push(false);
+          if (this.monedas[index].estado)
+          {
+            this.nmonedas+=1;
+          }
           if (!this.monedas[index].monto) {
             this.monedas[index].monto = 0
           }
         }
-
+        if (this.nmonedas==0)
+        {
+          this.modificando=false;
+        }
         console.log(this.monedas);
       }
 
