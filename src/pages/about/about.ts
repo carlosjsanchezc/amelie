@@ -11,14 +11,18 @@ export class AboutPage {
   apikey: string;
   apisign: string;
   exchanger: string;
+  id_exchanger:number;
   nmonedas:number;
   modificando:boolean;
+  leverage:number;
   constructor(public navCtrl: NavController, public HttpService: HttpconnectProvider) {
     this.modificando=true;
+    this.id_exchanger=this.HttpService.id_exchanger;
     this.cargarmonedas();
     this.apikey = this.HttpService.apikey;
     this.apisign = this.HttpService.apisign;
     this.exchanger = this.HttpService.exchanger;
+    console.log(this.id_exchanger);
   }
   cargarmonedas() {
     let id = this.HttpService.id_usuario;

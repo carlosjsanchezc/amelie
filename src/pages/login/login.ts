@@ -47,9 +47,10 @@ export class LoginPage {
       if (data['success']=='true')
       {
         this.mimensaje="Entrando...";
-        console.log('Login true');
+        console.log(data);
         this.HttpService.exchanger=data['exchanger'];
         this.HttpService.nombre=data['nombre'];
+        this.HttpService.id_exchanger=data['id_exchanger'];
         this.HttpService.apikey=data['apikey'];
         this.HttpService.apisign=data['apisign'];
         this.HttpService.id_usuario=data['id'];

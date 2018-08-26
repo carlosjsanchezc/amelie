@@ -12,13 +12,11 @@ export class HttpconnectProvider {
   nombre:string;
   id_usuario:number;
   exchanger:string;
+  id_exchanger:number;
   apikey:string;
   apisign:string;
   constructor(public http: HttpClient) {
-    console.log('Hello HttpconnectProvider Provider');
-    this.id_usuario=1;
-    console.log(this.id_usuario);
-  }
+      }
   httpr(url) {
 
     return this.http.get(url);

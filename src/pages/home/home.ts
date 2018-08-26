@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpconnectProvider } from '../../providers/httpconnect/httpconnect';
 import { LoginPage } from '../login/login';
+import { AlertController } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-home',
@@ -10,16 +12,27 @@ import { LoginPage } from '../login/login';
 export class HomePage {
   nombre:string;
   exchanger:string;
+  id_exchanger:number;
   msjapi:string;
   pendientes:any[]=[];
   trades:number;
   saldo:number;
   spint:boolean;
   datos:any;
+  last:number;
   saldoBTC:number;
+  ntiempo:number;
+  contratos:number;
 
-  constructor(public navCtrl: NavController,public httpService:HttpconnectProvider) {
+  constructor(public navCtrl: NavController,public httpService:HttpconnectProvider,public alertCtrl: AlertController) {
+    this.ntiempo=30000;
     this.exchanger=this.httpService.exchanger;
+    this.id_exchanger=this.httpService.id_exchanger;
+    if (this.id_exchanger==4)
+    {
+      console.log("BITMEX");
+        this.ntiempo=15000;
+    }
     this.nombre=this.httpService.nombre;
     this.trades=0;
     this.saldo=0;
@@ -29,12 +42,20 @@ export class HomePage {
       this.datosbot();
       this.ionViewDidLoad();
       //you can call function here
-},30000);
+},this.ntiempo);
 
   }
+
+
+
+
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
     this.exchanger=this.httpService.exchanger;
+    this.id_exchanger=this.httpService.id_exchanger;
+    console.log("Exchanger:");
+    console.log(this.id_exchanger);
     this.nombre=this.httpService.nombre;
     let url="http://midasbottraders.com/amelie/apiamelie.php?id_usuario="+this.httpService.id_usuario+"&opcion=1";
     
@@ -42,13 +63,13 @@ export class HomePage {
     {
       if (data)
       {
-        console.log(this.exchanger);
-        
         console.log(data);
         console.log(data['success']);
         console.log(data['return']['funds']);
         this.saldo=data['return']['funds']['usd'];
         this.saldoBTC=data['return']['funds']['btc'];
+        this.last=data['return']['ticker'];
+
 
         if (data['success']){
           this.msjapi="Verificada";
@@ -114,4 +135,74 @@ export class HomePage {
       this.spint=false;
     });
   }
+
+
+  showConfirmCompraBitmex() {
+    const confirm = this.alertCtrl.create({
+      title: 'Transaccion Bitmex',
+      message: 'Está Usted Seguro de realizar la compra?',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Si',
+          handler: () => {
+            console.log('Agree clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+  showConfirmVentaBitmex() {
+    const confirm = this.alertCtrl.create({
+      title: 'Transaccion Bitmex',
+      message: 'Está Usted Seguro de realizar la Venta?',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Si',
+          handler: () => {
+            console.log('Agree clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+  confirmCerrarTransaccion(i,id) {
+    const confirm = this.alertCtrl.create({
+      title: 'Transaccion Bitmex',
+      message: 'Está Usted Seguro de cerrar transacción?',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Si',
+          handler: () => {
+            console.log('Agree clicked');
+            this.vender(i,id);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+
 }
