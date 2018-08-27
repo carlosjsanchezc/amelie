@@ -23,9 +23,12 @@ export class HomePage {
   saldoBTC:number;
   ntiempo:number;
   contratos:number;
+  leverage:number;
 
   constructor(public navCtrl: NavController,public httpService:HttpconnectProvider,public alertCtrl: AlertController) {
     this.ntiempo=30000;
+    this.contratos=0;
+    this.leverage=10;
     this.exchanger=this.httpService.exchanger;
     this.id_exchanger=this.httpService.id_exchanger;
     if (this.id_exchanger==4)

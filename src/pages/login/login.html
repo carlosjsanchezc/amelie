@@ -29,11 +29,11 @@
   <ion-list>
     <ion-item>
       <ion-label  stacked ><ion-icon name="email"></ion-icon>Correo</ion-label>
-      <ion-input type="email" [(ngModel)]="email" name="email"></ion-input>
+      <ion-input clearInput type="email" [(ngModel)]="email" name="email"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label  stacked >Password</ion-label>
-      <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+      <ion-input clearInput type="password" [(ngModel)]="password" name="password"></ion-input>
     </ion-item>
     <button ion-button block (click)="validalogin()">Login</button>
   </ion-list>
@@ -41,5 +41,6 @@
     MidasTradingBot La forma automatizada de hacer dinero.
     Contáctanos a <b>midasbottrader@gmail.com.</b>
     <br>Unete al club de los Ganadores!!
+    <br>TBit Corporation C.A.
   </div>
 </ion-content>

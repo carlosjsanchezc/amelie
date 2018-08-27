@@ -149,7 +149,7 @@
             <ion-thumbnail item-start>
                 <img src="http://midasbottraders.com/amelie/images/bitmex.ico" width="80px">
             </ion-thumbnail>
-            <ion-note item-end ><ion-badge color="secondary"  style="font-size: 2.6rem">USD{{last}}</ion-badge></ion-note>
+            <ion-note item-end color="dark" style="font-size: 1.8rem"><b>USD{{last}}</b></ion-note>
     
           </ion-item>
     
@@ -174,19 +174,29 @@
               </ion-row>
               <ion-row>
                   <ion-item>
-                      <ion-label stacked>Contratos</ion-label>
-                      <ion-input type="text"></ion-input>
+                      <ion-label floating>Contratos</ion-label>
+                      <ion-input clearInput type="number" [(ngModel)]="contratos" text-center style="font-weight: bolder;font-size: 2.2rem"></ion-input>
                   </ion-item>
 
-                </ion-row>                 
+                </ion-row> 
+                <ion-row>
+                    <ion-item>
+                        <ion-label style="font-size:1.8rem;font-weight: bold">Leverage</ion-label>
+              
+                        <ion-select [(ngModel)]="leverage" interface="action-sheet">
+                          <ion-option value="1" style="font-size:1.8rem;font-weight: bold">1x</ion-option>
+                          <ion-option value="10" style="font-size:1.8rem;font-weight: bold">10x</ion-option>
+                          <ion-option value="25">25x</ion-option>
+                          
+                        </ion-select>
+                      </ion-item>
+                </ion-row>                
             </ion-grid>
           </div>
      </div>
-     <ion-item>
-        <div text-center style="font-weight: bold;font-size: 2.2rem" *ngIf="trades>0">Trades Abiertos</div>
-        <div text-center style="font-weight: bold;font-size: 2.2rem" *ngIf="trades==0">Cotización</div>
-        
-      </ion-item>
+     <div text-center style="font-weight: bold;font-size: 2.2rem" *ngIf="trades>0">Trades Abiertos</div>
+
+      <ion-list>
     <ion-item-sliding *ngFor="let pendiente of pendientes;let i=index">
         <ion-item>
             <ion-thumbnail item-start>
@@ -200,15 +210,15 @@
             <p style="font-size: 1.2rem">Inversion:{{pendiente.inversion}}</p>
             <p style="font-size: 1.2rem">Precio Actual:{{pendiente.valor_moneda}} USD</p> 
             <p style="font-size: 1.2rem">Profit:<b>{{pendiente.profit}}USD</b></p>
-            <ion-note item-end ><ion-badge color="secondary" *ngIf="pendiente.variacion>0" style="font-size: 1.4rem">{{pendiente.variacion}}%</ion-badge><ion-badge color="danger" *ngIf="pendiente.variacion<0" style="font-size: 1rem">{{pendiente.variacion}}%</ion-badge></ion-note>
+            <ion-note item-end ><ion-badge color="secondary" *ngIf="pendiente.variacion>0" style="font-size: 1.4rem">{{pendiente.variacion}}%</ion-badge><ion-badge color="danger" *ngIf="pendiente.variacion<0" style="font-size: 1.4rem">{{pendiente.variacion}}%</ion-badge></ion-note>
       
           </ion-item>
           <ion-item-options side="right">
               <button ion-button color="secondary" (click)="confirmCerrarTransaccion(i,pendiente.id)" >
-              <ion-icon name="cash"></ion-icon>
-                  Vender
+              <ion-icon name="lock"></ion-icon>
+                  Cerrar Posición
               </button>
             </ion-item-options>
     </ion-item-sliding>
-  
+  </ion-list>
 </ion-content>
