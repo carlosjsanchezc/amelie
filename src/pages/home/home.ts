@@ -139,7 +139,24 @@ export class HomePage {
     });
   }
 
+  venderBITMEX(id:number)
+  {
 
+    let myDate: string = new Date().toISOString();
+    let fecha=encodeURI(myDate);
+
+    let url='http://midasbottraders.com/amelie/bitmextransaccion.php?opcion=5&id_usuario='+id.toString;
+    console.log(url);
+
+    this.spint=true;
+    this.httpService.httpr(url).subscribe((data) => 
+    {
+      console.log(data);
+      this.pendientes=data['results'];
+      this.trades=this.pendientes.length;
+      this.spint=false;
+    });
+  }
   showConfirmCompraBitmex() {
     const confirm = this.alertCtrl.create({
       title: 'Transaccion Bitmex',
@@ -165,7 +182,7 @@ export class HomePage {
   showConfirmVentaBitmex() {
     const confirm = this.alertCtrl.create({
       title: 'Transaccion Bitmex',
-      message: 'Está Usted Seguro de realizar la Venta?',
+      message: 'Está Usted Seguro de cerrar transacción?',
       buttons: [
         {
           text: 'No',
@@ -177,12 +194,16 @@ export class HomePage {
           text: 'Si',
           handler: () => {
             console.log('Agree clicked');
+            console.log("Id Usuario:");
+            console.log(this.httpService.id_usuario);
+            this.venderBITMEX(this.httpService.id_usuario);
           }
         }
       ]
     });
     confirm.present();
   }
+
 
   confirmCerrarTransaccion(i,id) {
     const confirm = this.alertCtrl.create({
@@ -199,7 +220,19 @@ export class HomePage {
           text: 'Si',
           handler: () => {
             console.log('Agree clicked');
-            this.vender(i,id);
+            console.log("Id Usuario:");
+            console.log(this.httpService.id_usuario);
+            if (this.httpService.id_exchanger==4)
+            {
+              this.venderBITMEX(this.httpService.id_usuario);
+
+            }
+            if (this.httpService.id_exchanger==2)
+            {
+              this.vender(i,id);
+
+            }
+            
           }
         }
       ]
