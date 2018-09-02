@@ -207,7 +207,7 @@ export class HomePage {
 
   confirmCerrarTransaccion(i,id) {
     const confirm = this.alertCtrl.create({
-      title: 'Transaccion Bitmex',
+      title: 'Cerrar Transacción',
       message: 'Está Usted Seguro de cerrar transacción?',
       buttons: [
         {
