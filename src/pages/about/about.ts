@@ -6,6 +6,11 @@ import { HttpconnectProvider } from '../../providers/httpconnect/httpconnect';
   templateUrl: 'about.html'
 })
 export class AboutPage {
+
+  ionViewWillEnter(){
+    //calling an API
+  this.cargarmonedas();  
+  }
   monedas: any[] = [];
   monedas_server: any[] = [];
   apikey: string;

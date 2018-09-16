@@ -34,7 +34,7 @@ export class HomePage {
     if (this.id_exchanger==4)
     {
       console.log("BITMEX");
-        this.ntiempo=15000;
+        this.ntiempo=30000;
     }
     this.nombre=this.httpService.nombre;
     this.trades=0;
